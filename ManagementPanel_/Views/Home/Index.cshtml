@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Kullanıcı Listesi";
+}
+
+<div id="mDiv">
+</div>
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row mt-30" style="min-height:565px">
+            <div class="col-md-12">
+                <div class="card" style="min-height:530px">
+                    <div class="card-header" style="background-color:white;">
+                        
+                        <div class="col-md-8">
+                            <h4>Kullanıcı Listesi</h4>
+                        </div>
+                        <div class="col-sm-4 align-right">
+                            <a id="myBtn" class="btn btn-sm btn-primary right" href="/User/Edit">Kullanıcı Ekle</a>
+                            <a id="refreshTable" class="btn btn-sm btn-default right" onclick="Refresh()">Yenile</a>
+                            
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-vcenter text-nowrap cell-border compact" id="example">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        var admin = true;
+        if ("@Convert.ToBoolean(Session["Admin"])" == "False")
+        {
+            admin = false;
+        }
+
+    </script>
+    <script src="~/Scripts/UserList.js"></script>
+}

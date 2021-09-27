@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css" />
+    
+    
+    @Styles.Render("~/bundles/css")
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+</head>
+<body>
+    <div id="left-sidebar" class="sidebar " style="padding: 25px 10px 20px 35px; width: 230px;">
+        <h5 class="brand-name"><b>Management Panel</b> <a href="javascript:void(0)" class="menu_option float-right"></a></h5>
+        <nav id="left-sidebar-nav" class="sidebar-nav">
+            <ul class="metismenu">
+                <li class="active"><a href="/Home/Index"><span>Kullanıcı Listesi</span></a></li>
+                @*<li><a href="/User/Edit"><span>Kullanıcı Ekle</span></a></li>*@
+
+            </ul>
+        </nav>
+    </div>
+    <div class="page" style="width: calc(100% - 230px); left: 230px; ">
+
+        <div id="loader"></div>
+        <div id="page_top" class="section-body top_dark">
+            <div class="container-fluid">
+                <div class="page-header" style="margin:0px;">
+                    <div class="left">
+                        <a href="javascript:void(0)" class="icon menu_toggle mr-3"></a>
+                        <h1 class="page-title" style=" margin-top: 5px;">@Session["Page"]</h1>
+                    </div>
+                    <div class="right">
+                        <div class="notification d-flex">
+
+
+
+                            <div class="dropdown d-flex">
+                                <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown">@Session["Name"] @Session["Surname"] </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                    <a class="dropdown-item" href="/Account/Logout"><i class="dropdown-icon fe fe-log-out"></i> Çıkış</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/js")
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
